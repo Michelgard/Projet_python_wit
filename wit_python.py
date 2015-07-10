@@ -63,7 +63,7 @@ def analyse_texte(js):
     else:
 	try:
 		val_On_Off = js[u'outcomes'][0][u'entities'][u'on_off'][0][u'value']
-	except (KeyError, IndexError, nameError) as e:
+	except (KeyError, IndexError, NameError) as e:
 		ecoute(3)
 			
     	if intent == 'ecran':
