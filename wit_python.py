@@ -54,7 +54,7 @@ def texte_json(response):
 def analyse_texte(js):
     try:
 	intent = js[u'outcomes'][0][u'intent']
-    except NameError:
+    except (KeyError, IndexError, NameError) as e:
 	ecoute(3)
 		
     if intent == 'Jasper':
@@ -63,7 +63,7 @@ def analyse_texte(js):
     else:
 	try:
 		val_On_Off = js[u'outcomes'][0][u'entities'][u'on_off'][0][u'value']
-    	except NameError:
+	except (KeyError, IndexError, nameError) as e:
 		ecoute(3)
 			
     	if intent == 'ecran':
