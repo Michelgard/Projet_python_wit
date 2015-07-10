@@ -24,13 +24,6 @@ def parole(texte):
     os.system(cmd % texte)
 #    espeak.synth(texte)
 
-def handle_response(response):
-    #print('Response: {}'.format(response))
-    return response
-
-def witecoute():
-    wit.voice_query_auto_async(access_token, handle_response)
-	
 # Fonction Mise en route de l'écoute
 def ecoute(passage): # Valeurs passage: 1 Mise en route, 2 Ecoute OK en attente, 3 Commande pas comprise, 4 pas de message 
     response = None
@@ -43,11 +36,8 @@ def ecoute(passage): # Valeurs passage: 1 Mise en route, 2 Ecoute OK en attente,
 	parole("Merci de répéter la commande, je n\'ai pas compris")
     
     while response == None:
-    	witecoute()	
-    	time.sleep(7) 
-     #   response = wit.voice_query_auto_async(access_token)
-     #   print('Response: {}'.format(response))
-
+	response = wit.voice_query_auto(access_token)
+             
     texte_json(response)
 
 #Fonction analyse retour écoute micro en JSON
