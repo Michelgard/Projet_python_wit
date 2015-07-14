@@ -9,9 +9,15 @@ import signal
 import sys
 import os
 import time
+from sqlpy import *
+import MySQLdb
 
 access_token = 'K3RY7CDERSUFT5KJTYJH6IVKKDBSI2WH' # Code Wit
 
+#connexion  à la base de données
+db = MySQLdb.connect(host, user, passwd, db)
+c = db.cursor()
+                                                                                                                                      
 #Fonction appelée quand vient l'heure de fermer notre programme
 def fermer_programme(signal, frame):
     parole("Fermeture programme au revoir a bientot")
